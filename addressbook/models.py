@@ -32,7 +32,7 @@ class Address(TimeStampedModel):
     town = models.CharField(_('town'), max_length=50)
     county = models.CharField(_('county'), max_length=50, blank=True)
     postcode = models.CharField(_('postcode'), max_length=50)
-    country = models.ForeignKey(Country, verbose_name=_('country'))
+    country = models.ForeignKey(Country, verbose_name=_('country'), on_delete=models.PROTECT)
     status = models.IntegerField(_('status'), choices=STATUS, default=0)
 
 
