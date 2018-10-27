@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.utils.safestring import mark_safe
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
@@ -62,7 +62,7 @@ class Address(TimeStampedModel):
         for row in [self.contact_name, self.address_one, self.address_two,
                     self.town, self.county, self.postcode, self.country]:
             if row:
-                output.append(template % {'field': force_unicode(row)})
+                output.append(template % {'field': force_text(row)})
         if not seperator:
             seperator = u'\n'
         return mark_safe(seperator.join(output))
